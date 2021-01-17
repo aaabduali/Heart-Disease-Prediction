@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Parallax Template - Materialize</title>
+
+  <!-- CSS  -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href={{ url_for('static',filename='styles/materialize.css') }} type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href={{ url_for('static',filename='styles/style.css') }} type="text/css" rel="stylesheet" media="screen,projection"/>
+</head>
+<body>
+  <nav class="white" role="navigation">
+    <div class="nav-wrapper container">
+      <a id="logo-container" href="#" class="brand-logo">Logo</a>
+      <ul class="right hide-on-med-and-down">
+        <li><a href="#">Navbar Link</a></li>
+      </ul>
+
+      <ul id="nav-mobile" class="sidenav">
+        <li><a href="#">Navbar Link</a></li>
+      </ul>
+      <a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+    </div>
+  </nav>
+
+  <div class="section no-pad-bot" id="index-banner">
+    <div class="container">
+      <br><br>
+      <h1 class="header center orange-text">Heart Disease Predictor</h1>
+      <div class="row center">
+        <h5 class="header col s12 light">A simple prototype to check if your you have a heart disease or not.</h5>
+      </div>
+      
+      <br><br>
+
+    </div>
+  </div>
+
+
+  <div class="container">
+    <div class="row">
+        <form action="{{ url_for('predict')}}" method="POST" class="col s12">
+          <div class="row">
+            <div class="input-field col s4">
+              <input placeholder="Age" name="age" id="age" type="number" class="validate">
+              <label for="age">Age</label>
+            </div>
+            <div class="input-field col s4">
+              <select name="sex">
+                <option value="" disabled selected>Choose your Sex</option>
+                <option value="1">Male</option>
+                <option value="0">Female</option>
+                
+              </select>
+              <label>Sex</label>
+            </div>
+            <div class="input-field col s4">
+              <select name="cp">
+                <option value="" disabled selected>Chest pain type</option>
+                <option value="0">Typical Angina</option>
+                <option value="1">Atypical Angina</option>
+                <option value="2">Non Anginal</option>
+                <option value="0">Asymptomatic</option>
+              
+              </select>
+              <label>Chest Pain Type</label>
+            </div>
+          </div>
+         
+          <div class="row">
+            <div class="input-field col s4">
+              <input placeholder="Resting bp" name="trestbps" id="trestbps" type="number" class="validate">
+              <label for="trestbps">Resting Blood Pressure</label>
+            </div>
+            <div class="input-field col s4">
+              <input placeholder="Cholestrol" name="chol" id="chol" type="number" class="validate">
+              <label for="first_name">Cholestrol Level</label>
+            </div>
+            <div class="input-field col s4">
+              <select name="fbs">
+                <option value="" disabled selected>Fasting Blood Sugar</option>
+                <option value="1">Greater than 120 mg/dl</option>
+                <option value="0">Less than 120 mg/dl</option>
+               
+              
+              </select>
+              <label>Fasting blood sugar</label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="input-field col s4">
+              <select name="restecg">
+                <option value="" disabled selected>Resting ECG</option>
+                <option value="1">ST-T abnormality</option>
+                <option value="0">Normal</option>
+                <option value="2">Probable or Definite hypertrophy</option>
+
+               
+              
+              </select>
+              <label>Resting ECG</label>
+            </div>
+            <div class="input-field col s4">
+                <input autocomplete="off id="thalach" name="thalach" type="number" class="validate">
+              <label for="thalach">Maximum Heart Rate</label>
+            </div>
+            <div class="input-field col s4">
+              <select name="exang">
+                <option value="" disabled selected>Exercise induced Angina</option>
+                <option value="1">Yes</option>
+                <option value="0">No</option>
+              </select>
+              <label>Exercise induced Angina</label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="input-field col s3">
+                <input autocomplete="off id="oldpeak" type="number" name="oldpeak" placeholder="ST depression" class="validate">
+              <label for="oldpeak">ST depression by Exercise</label>
+            </div>
+            <div class="input-field col s3">
+              <select name="slope">
+                <option value="" disabled selected>Slope of ST segment</option>
+                <option value="1">Flat</option>
+                <option value="0">Unslopping</option>
+                <option value="2">Downslopping</option>
+              </select>
+              <label>Slope of ST segment</label>
+            </div>
+            <div class="input-field col s3">
+              <input autocomplete="off" placeholder="No of vessels colored" id="ca" type="number" name="ca" min="0" max="3" class="validate">
+            <label for="ca">Number if major Vessels colored</label>
+          </div>
+          <div class="input-field col s3">
+            <select name="tha">
+              <option value="" disabled selected>Thalium Test</option>
+              <option value="1">Fixed</option>
+              <option value="0">Normal</option>
+              <option value="2">Reversible</option>
+            </select>
+            <label>Thalium Test</label>
+          </div>
+          </div>
+          <div class="row center">
+            <button class="btn waves-effect waves-light" type="submit">Predict
+                <i class="material-icons right">airplanemode_active</i>
+              </button>
+          </div>
+          
+        </form>
+      </div>
+            
+</div>
+
+  <footer class="page-footer teal">
+    <div class="container">
+      <div class="row">
+        <div class="col l6 s12">
+          <h5 class="white-text">Company Bio</h5>
+          <p class="grey-text text-lighten-4">We are a team of college students working on this project like it's our full time job. Any amount would help support and continue development on this project and is greatly appreciated.</p>
+
+
+        </div>
+        <div class="col l3 s12">
+          <h5 class="white-text">Settings</h5>
+          <ul>
+            <li><a class="white-text" href="#!">Link 1</a></li>
+            <li><a class="white-text" href="#!">Link 2</a></li>
+            <li><a class="white-text" href="#!">Link 3</a></li>
+            <li><a class="white-text" href="#!">Link 4</a></li>
+          </ul>
+        </div>
+        <div class="col l3 s12">
+          <h5 class="white-text">Connect</h5>
+          <ul>
+            <li><a class="white-text" href="#!">Link 1</a></li>
+            <li><a class="white-text" href="#!">Link 2</a></li>
+            <li><a class="white-text" href="#!">Link 3</a></li>
+            <li><a class="white-text" href="#!">Link 4</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-copyright">
+      <div class="container">
+      Made by <a class="brown-text text-lighten-3" href="http://materializecss.com">Materialize</a>
+      </div>
+    </div>
+  </footer>
+
+
+  <!--  Scripts-->
+  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script src={{ url_for('static',filename="js/materialize.js") }}></script>
+  <script src={{ url_for('static',filename="js/init.js") }}></script>
+  <script>
+    $(document).ready(function(){
+    $('select').formSelect();
+  });
+  </script>
+  </body>
+</html>
