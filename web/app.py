@@ -16,7 +16,7 @@ def predict():
     prediction = model.predict(final_features)
 
     output =prediction[0]
-    print(output)
-    return render_template('index.html', prediction_text='${}'.format(output))
+    
+    return render_template('index.html', prediction_text='{}'.format(output))
 if __name__ == "__main__":
     app.run(debug=True)

@@ -3,7 +3,7 @@
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <title>Parallax Template - Materialize</title>
+  <title>Heart Disease Prediction</title>
 
   <!-- CSS  -->
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -13,9 +13,9 @@
 <body>
   <nav class="white" role="navigation">
     <div class="nav-wrapper container">
-      <a id="logo-container" href="#" class="brand-logo">Logo</a>
+      <a id="logo-container" href="#" class="brand-logo">Heart Disease Prediction</a>
       <ul class="right hide-on-med-and-down">
-        <li><a href="#">Navbar Link</a></li>
+        <li><a href="#">Random Forest Algorithm</a></li>
       </ul>
 
       <ul id="nav-mobile" class="sidenav">
@@ -37,8 +37,25 @@
 
     </div>
   </div>
-
-
+  <div class="row">
+{% if prediction_text=='1' %}
+  
+  <div class="card center red">
+    <div class="card-content">
+      <h4 class="white-text">You might have a heart disease.</h4>
+    </div>
+    
+  </div>
+{% elif prediction_text=='0' %}
+<div class="card center teal">
+  <div class="card-content">
+    <h4 class="white-text">Looks like You're safe.</h4>
+  </div>
+  
+</div>
+{% else %}
+{% endif %}
+</div>
   <div class="container">
     <div class="row">
         <form action="{{ url_for('predict')}}" method="POST" class="col s12">
@@ -103,7 +120,7 @@
               <label>Resting ECG</label>
             </div>
             <div class="input-field col s4">
-                <input autocomplete="off id="thalach" name="thalach" type="number" class="validate">
+                <input autocomplete="off" placeholder="Maximum Heart Rate" id="thalach" name="thalach" type="number" class="validate">
               <label for="thalach">Maximum Heart Rate</label>
             </div>
             <div class="input-field col s4">
